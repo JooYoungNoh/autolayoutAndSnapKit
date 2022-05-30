@@ -119,6 +119,7 @@ class ViewController: UIViewController {
         
         self.greenBoxTopConstraint?.update(offset: offset)
         
+        //애니메이션 넣기
         UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
             self.view.layoutIfNeeded()
         }).startAnimation()
