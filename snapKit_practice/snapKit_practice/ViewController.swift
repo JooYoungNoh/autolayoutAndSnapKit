@@ -63,6 +63,8 @@ class ViewController: UIViewController {
         // snapKit yellow Box
         yellowBox.snp.makeConstraints { make in
             make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20))       //탑 바텀 리딩 트레일링 전부다
+            
+            //make.edges.equalToSuperview().inset(UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20))       //위와 같은 말
         }
     }
 
