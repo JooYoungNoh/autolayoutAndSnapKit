@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .systemGray
         label.numberOfLines = 0
-        label.text = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello \n HIHIHIHIHIHHIHIHIHIHHIHIHIHIHIHIhloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHeloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHeloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHe"
+        label.text = "HelloHelloHelloHello"
         label.textColor = .red
         
         return label
@@ -26,6 +26,14 @@ class ViewController: UIViewController {
        let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemPink
+        
+        return view
+    }()
+    
+    //세번째 뷰 그리기
+    let thirdView: MyCircleView = {
+        let view = MyCircleView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
     }()
@@ -64,10 +72,20 @@ class ViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             secondView.leadingAnchor.constraint(equalTo: firstLabel.leadingAnchor, constant: 20),
-            secondView.trailingAnchor.constraint(equalTo: firstLabel.trailingAnchor, constant: 10),
+            secondView.trailingAnchor.constraint(equalTo: firstLabel.trailingAnchor, constant: -50),
             secondView.topAnchor.constraint(equalTo: firstLabel.bottomAnchor),
             secondView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
         ])
+        
+        //세번째 뷰
+        firstView.addSubview(thirdView)
+        
+        thirdView.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 50).isActive = true
+        thirdView.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -50).isActive = true
+        thirdView.topAnchor.constraint(equalTo: firstView.topAnchor, constant: 50).isActive = true
+        thirdView.bottomAnchor.constraint(equalTo: firstView.bottomAnchor, constant: -50).isActive = true
+        
+        
         
     
     }
