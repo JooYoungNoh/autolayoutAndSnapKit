@@ -8,6 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    //label 그리기
+    let firstLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .systemGray
+        label.numberOfLines = 0
+        label.text = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello \n HIHIHIHIHIHHIHIHIHIHHIHIHIHIHIHI"
+        label.textColor = .red
+        
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +38,20 @@ class ViewController: UIViewController {
         firstView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         firstView.heightAnchor.constraint(equalToConstant: 300).isActive = true
         
- 
         
+        
+        //label
+        self.view.addSubview(firstLabel)
+        
+        firstLabel.leadingAnchor.constraint(equalTo: firstView.leadingAnchor, constant: 10).isActive = true
+        firstLabel.trailingAnchor.constraint(equalTo: firstView.trailingAnchor, constant: -10).isActive = true
+        
+        firstLabel.topAnchor.constraint(equalTo: firstView.bottomAnchor, constant: 10).isActive = true
+        
+        firstLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
+       
+        
+    
     }
 
 
