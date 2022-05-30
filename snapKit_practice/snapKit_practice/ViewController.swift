@@ -10,6 +10,9 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    var offset = 0              //위치 변경
+    var greenBoxTopConstraint : Constraint? = nil
+    
     lazy var greenBox = { () -> UIView in
         let view = UIView()
         view.backgroundColor = .green
@@ -98,7 +101,7 @@ class ViewController: UIViewController {
         greenBox.snp.makeConstraints { make in
             make.width.height.equalTo(100)
             make.centerX.equalToSuperview()
-            make.top.equalTo(blueBox.snp.bottom).offset(20)
+            self.greenBoxTopConstraint = make.top.equalTo(blueBox.snp.bottom).offset(20).constraint
         }
         
         myDarkGratBtn.snp.makeConstraints { make in
@@ -107,9 +110,19 @@ class ViewController: UIViewController {
             make.bottom.equalTo(self.view.safeAreaLayoutGuide.snp.bottom).offset(-30)
             make.centerX.equalToSuperview()
         }
+        
+        myDarkGratBtn.addTarget(self, action: #selector(moveGreenBox(_:)), for: .touchUpInside)
     }
     
-
+    @objc func moveGreenBox(_ sender: UIButton){
+        offset += 20
+        
+        self.greenBoxTopConstraint?.update(offset: offset)
+        
+        UIViewPropertyAnimator(duration: 0.2, curve: .easeOut, animations: {
+            self.view.layoutIfNeeded()
+        }).startAnimation()
+    }
 
 }
 
