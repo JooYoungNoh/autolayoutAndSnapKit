@@ -15,10 +15,19 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .systemGray
         label.numberOfLines = 0
-        label.text = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello \n HIHIHIHIHIHHIHIHIHIHHIHIHIHIHIHI"
+        label.text = "HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello \n HIHIHIHIHIHHIHIHIHIHHIHIHIHIHIHIhloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHeloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHeloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHe"
         label.textColor = .red
         
         return label
+    }()
+    
+    //두번째 뷰 그리기
+    let secondView: UIView = {
+       let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .systemPink
+        
+        return view
     }()
 
     override func viewDidLoad() {
@@ -50,6 +59,15 @@ class ViewController: UIViewController {
         
         firstLabel.heightAnchor.constraint(lessThanOrEqualToConstant: 200).isActive = true
        
+        //두번째 뷰
+        self.view.addSubview(secondView)
+        
+        NSLayoutConstraint.activate([
+            secondView.leadingAnchor.constraint(equalTo: firstLabel.leadingAnchor, constant: 20),
+            secondView.trailingAnchor.constraint(equalTo: firstLabel.trailingAnchor, constant: 10),
+            secondView.topAnchor.constraint(equalTo: firstLabel.bottomAnchor),
+            secondView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+        ])
         
     
     }
