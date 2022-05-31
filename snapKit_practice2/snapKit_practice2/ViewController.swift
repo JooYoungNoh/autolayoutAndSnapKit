@@ -10,7 +10,7 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    var offset = 0
+    var offset = 100
     var blueViewConstraint: Constraint? = nil
     
     let mybackground: UIView = {
@@ -56,6 +56,7 @@ class ViewController: UIViewController {
         
         //버튼
         self.view.addSubview(myButton)
+        self.myButton.addTarget(self, action: #selector(moveView(_:)), for: .touchUpInside)
         
         myButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -69,13 +70,20 @@ class ViewController: UIViewController {
         
         myView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(myButton.snp.bottom).offset(100)
             make.width.equalTo(100)
             make.height.equalTo(50)
+            
+            self.blueViewConstraint = make.top.equalTo(myButton.snp.bottom).offset(100).constraint
         }
         
     }
     
+    @objc func moveView(_ sender: UIButton){
+        self.offset -= 20
+        
+        self.blueViewConstraint?.update(offset: offset)
+        
+    }
 
 
 }
